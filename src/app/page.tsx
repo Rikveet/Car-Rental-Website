@@ -1,20 +1,20 @@
 'use client';
 import styles from "@styles/Home.module.scss";
-import {Gloock} from "@next/font/google";
+import {Abril_Fatface} from "@next/font/google";
 import {Space_Mono} from "@next/font/google";
 import Image from "next/image";
 import {Subscribe} from "@components/forms/subscribe";
 import {Google, Instagram, Twitter} from "@mui/icons-material";
 
 
-const gloock = Gloock({weight: '400', style: 'normal', preload: false});
-const spaceMono = Space_Mono({weight: '400', style: 'normal', preload: false});
+const abrilFatface = Abril_Fatface({weight: '400', subsets: ['latin']});
+const spaceMono = Space_Mono({weight: '400', subsets: ['latin']});
 
 export default function Home() {
     return (
         <div className={styles.container}>
             <div className={styles.hero}>
-                <div className={`${gloock.className} ${styles.companyName} `}>AXLE RENTAL</div>
+                <div className={`${abrilFatface.className} ${styles.companyName} `}>AXLE RENTAL</div>
                 <div className={styles.menu}>
                     <a className={styles.link} href={'/fleet'}>Fleet</a>
                     <a className={styles.link} href={'/booking'}>Booking</a>
@@ -31,7 +31,7 @@ export default function Home() {
             <div className={styles.message}>
                 <div className={styles.wrapper}>
                     <div className={styles.row}>
-                        <div className={`${gloock.className} ${styles.title}`}>
+                        <div className={`${abrilFatface.className} ${styles.title}`}>
                             Rev Up Your Life
                         </div>
                         <div className={`${spaceMono.className} ${styles.experienceMessage}`}>
@@ -85,7 +85,7 @@ export default function Home() {
             </div>
             <div className={styles.callToAction}>
                 <div className={styles.wrapper}>
-                    <div className={`text-left ${gloock.className} ${styles.title}`}>
+                    <div className={`text-left ${abrilFatface.className} ${styles.title}`}>
                         Find Your Dream Ride Today!
                     </div>
                     <div className={styles.searchButtonsWrapper}>
@@ -95,7 +95,7 @@ export default function Home() {
                 </div>
             </div>
             <div id={'faq'} className={styles.faq}>
-                <div className={`${gloock.className} ${styles.title}`}>
+                <div className={`${abrilFatface.className} ${styles.title}`}>
                     Booking Questions?
                 </div>
                 <div className={styles.questionsRow}>
@@ -119,7 +119,7 @@ export default function Home() {
             </div>
             <div className={styles.callToAction} style={{background: 'white !important'}}>
                 <div className={styles.wrapper}>
-                    <div className={`text-left ${gloock.className} ${styles.title}`} style={{color: '#902923 !important'}}>
+                    <div className={`text-left ${abrilFatface.className} ${styles.title}`} style={{color: '#902923 !important'}}>
                         Get Exclusive Offers
                     </div>
                     <div className={styles.subscriberInput}>

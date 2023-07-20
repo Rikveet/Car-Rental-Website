@@ -1,5 +1,5 @@
 'use client';
-import styles from "@styles/Home.module.scss";
+import styles from "@styles/home.module.scss";
 import {Abril_Fatface} from "@next/font/google";
 import {Space_Mono} from "@next/font/google";
 import Image from "next/image";

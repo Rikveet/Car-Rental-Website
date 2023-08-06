@@ -1,24 +1,16 @@
-"use client"
+import {Links} from "@/views";
+import {ArrowDropDown} from "@mui/icons-material";
 import {Button, Menu as MenuContainer, MenuItem} from "@mui/material";
-import {usePathname, useRouter} from "next/navigation";
-import Image from "next/image";
 import styles from "@styles/navbar.module.scss";
 import React, {useCallback, useEffect, useState} from "react";
-import {ArrowDropDown} from "@mui/icons-material";
-
-const Links = [
-    {href: "/", label: "Home"},
-    {href: "/fleet", label: "Our Fleet"},
-    {href: "/booking", label: "Your Bookings"},
-    {href: "/services", label: "Services"},
-    {href: "/contact-us", label: "Contact Us"},
-]
+import {useLocation, useNavigate} from "react-router-dom";
 
 const Menu = () => {
     const [open, setOpen] = useState(false);
-    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-    const path = usePathname();
-    const router = useRouter();
+    const [anchorEl, setAnchorEl] = useState(null);
+    const {pathname} = useLocation();
+    const navigate = useNavigate();
+    console.log(pathname.split("/"));
     return (
         <nav className={`${styles.NavLinks} justify-end`}>
             <Button
@@ -32,7 +24,7 @@ const Menu = () => {
                 }}
                 endIcon={<ArrowDropDown/>}
             >
-                {Links.find(link => link.href === path)?.label ?? ('Menu')}
+                {Links.find(link => link.href === pathname.split("/")[1])?.label ?? ('Menu')}
             </Button>
             <MenuContainer
                 id="basic-menu"
@@ -44,17 +36,16 @@ const Menu = () => {
                 MenuListProps={{
                     'aria-labelledby': 'basic-button',
                 }}
-
             >
                 {Links.map(link => (
                     <MenuItem
                         key={link.href}
                         onClick={() => {
-                            router.push(link.href)
+                            navigate(link.href)
                             setOpen(false)
                         }}
                         style={{
-                            color: path === link.href ? "#bd2949" : "#111111",
+                            color: pathname.split("/")[1] === link.href ? "#bd2949" : "#111111",
                             backgroundColor: '#FFFFFFF'
                         }}
                     > {link.label}
@@ -66,17 +57,16 @@ const Menu = () => {
 }
 
 const Bar = () => {
-    const path = usePathname();
-    const router = useRouter();
+    const {pathname} = useLocation();
+    const navigate = useNavigate();
     return (
-
         <ul className={styles.NavLinks}>
             {Links.map(link => (
                 <li key={link.href}>
                     <Button
-                        color={path === link.href ? "primary" : "secondary"}
+                        color={pathname.split("/")[1] === link.href ? "primary" : "secondary"}
                         onClick={() => {
-                            router.push(link.href);
+                            navigate(link.href);
                         }}
                         size={"large"}
                     >
@@ -93,10 +83,10 @@ export function Navbar() {
     /*Navigation component displayed on top of the customer view components such as home, fleet, services and contact us
     * It automatically shows the component that is active by using the usePathname
     * This component returns null when the route does not exist in Links*/
-    const path = usePathname();
+    const {pathname} = useLocation();
     const [desktop, setDesktop] = useState(false);
 
-    const updateTarget = useCallback((e: MediaQueryListEvent) => {
+    const updateTarget = useCallback((e) => {
         if (e.matches) {
             setDesktop(false);
         } else {
@@ -110,7 +100,7 @@ export function Navbar() {
 
         if (media.matches) {
             setDesktop(false);
-        }else{
+        } else {
             setDesktop(true);
         }
 
@@ -119,10 +109,10 @@ export function Navbar() {
         };
     }, []);
     return (
-        path === '/' ?
+        pathname === '/' ?
             null :
             <nav className={styles.Nav}>
-                <Image src="/logo.svg" alt="logo" width={125} height={125} priority/>{desktop ?
+                <img src="/logo512.jpg" alt="logo" width={125} height={125}/>{desktop ?
                 <Bar/> :
                 <Menu/>}
             </nav>

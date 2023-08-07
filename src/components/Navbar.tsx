@@ -7,10 +7,9 @@ import {useLocation, useNavigate} from "react-router-dom";
 
 const Menu = () => {
     const [open, setOpen] = useState(false);
-    const [anchorEl, setAnchorEl] = useState(null);
+    const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
     const {pathname} = useLocation();
     const navigate = useNavigate();
-    console.log(pathname.split("/"));
     return (
         <nav className={`${styles.NavLinks} justify-end`}>
             <Button
@@ -51,6 +50,19 @@ const Menu = () => {
                     > {link.label}
                     </MenuItem>
                 ))}
+                <MenuItem
+                    key={'contact-us-number'}
+                    onClick={() => {
+                        window.open("tel:+19059170818")
+                        setOpen(false)
+                    }
+                    }
+                    style={{
+                        color: "#111111",
+                        backgroundColor: '#FFFFFFF'
+                    }}
+                > {'Contact Us'}
+                </MenuItem>
             </MenuContainer>
         </nav>
     )
@@ -74,6 +86,17 @@ const Bar = () => {
                     </Button>
                 </li>
             ))}
+            <li key={'contactUs'}>
+                <Button
+                    color={"secondary"}
+                    onClick={() => {
+                        window.open("tel:+19059170818")
+                    }}
+                    size={"large"}
+                >
+                    {'Contact Us'}
+                </Button>
+            </li>
         </ul>
 
     )
@@ -86,7 +109,7 @@ export function Navbar() {
     const {pathname} = useLocation();
     const [desktop, setDesktop] = useState(false);
 
-    const updateTarget = useCallback((e) => {
+    const updateTarget = useCallback((e: MediaQueryListEvent) => {
         if (e.matches) {
             setDesktop(false);
         } else {

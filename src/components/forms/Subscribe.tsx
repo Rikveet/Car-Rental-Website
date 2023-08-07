@@ -1,3 +1,4 @@
+import React from "react";
 import {Button, InputBase, Paper} from "@mui/material";
 
 export function Subscribe() {

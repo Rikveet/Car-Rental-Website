@@ -1,8 +1,9 @@
-import {Google, Instagram, Twitter} from "@mui/icons-material";
+import React from "react";
+import {Google, Instagram, Mail} from "@mui/icons-material";
 import {Subscribe} from "@components/forms/Subscribe";
-import styles from "@styles/home.module.scss";
+import styles from "@styles/aboutUs.module.scss";
 
-export default function Home() {
+export default function AboutUs() {
     return (
         <div className={styles.container}>
             <div className={styles.hero}>
@@ -37,7 +38,7 @@ export default function Home() {
                 <div className={styles.grid}>
                     <div className={styles.item}>
                         <div className={styles.imageWrapper}>
-                            <img className={styles.image} src={'/assets/images/suv.jpg'} alt={'suv image'}/>
+                            <img className={styles.image} src={'/assets/images/suv.jpg'} alt={'suv'}/>
                         </div>
                         <div className={styles.content}>
                             <div className={styles.heading}>
@@ -51,7 +52,7 @@ export default function Home() {
                     </div>
                     <div className={styles.item}>
                         <div className={styles.imageWrapper}>
-                            <img className={styles.image} src={'/assets/images/sedan.jpg'} alt={'sedan image'}/>
+                            <img className={styles.image} src={'/assets/images/sedan.jpg'} alt={'sedan'}/>
                         </div>
                         <div className={styles.content}>
                             <div className={styles.heading}>
@@ -65,7 +66,7 @@ export default function Home() {
                     </div>
                     <div className={styles.item}>
                         <div className={styles.imageWrapper}>
-                            <img className={styles.image} src={'/assets/images/sporty.jpg'} alt={'sports car image'}/>
+                            <img className={styles.image} src={'/assets/images/sporty.jpg'} alt={'sports car'}/>
                         </div>
                         <div className={styles.content}>
                             <div className={styles.heading}>
@@ -128,9 +129,9 @@ export default function Home() {
             </div>
             <div className={styles.footer}>
                 <div className={styles.icons}>
-                    <Twitter/>
                     <Instagram/>
-                    <Google/>
+                    <a href={'mailto:axlecarrental@gmail.com'}><Mail/></a>
+                    <a href={'https://goo.gl/maps/FqnhPBqz6MiDh6rR8'}><Google/></a>
                 </div>
                 <div className={styles.info}>
                     Axle Car Rental
